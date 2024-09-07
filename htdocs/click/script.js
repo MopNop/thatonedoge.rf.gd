@@ -1,13 +1,14 @@
 //statistics
 var clicks = 0; //amount of clicks
 var cpp = 1; //clicks per press
-var cps = 1; //clicks per second
+var cps = 0; //clicks per second
+
 
 //upgrades
-var exclickcost = 10; //cost of extra click
-var exclickpricemult = 1.2; //extra click price multiplier
-var cpsclickcost = 50; //cost of click per second
-var cpsclickpricemult = 1.5; //click per second price multiplier
+const baseexclickcost = 10; //base cost of extra click
+const exclickpricemult = 1.2; //extra click price multiplier
+const basecpscost = 50; //base cost of click per second
+const cpsclickpricemult = 1.5; //click per second price multiplier
 
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
@@ -46,7 +47,6 @@ function exclick() {
 	if (clicks >= exclickcost) {
 		clicks -= exclickcost; //subtract the cost
 		++cpp; //add 1 to the cpp
-		exclickcost = Math.round(exclickcost * exclickpricemult); //update the price
 		updateLabels(); //update the labels
 	}  
 }
@@ -57,16 +57,18 @@ function cpsclick() {
 	if (clicks >= cpsclickcost) {
 		clicks -= cpsclickcost; //subtract the cost
 		++cps; //add 1 to the cps
-		cpsclickcost = Math.round(50 * (1.25 ** cps)); //update the price
 		updateLabels(); //update the labels
 	}
 }
 
 //update labels
 function updateLabels() {
+	exclickcost = Math.round(baseexclickcost * (exclickpricemult ** (cpp + 1))); //update the price of cpp
+	cpsclickcost = Math.round(basecpscost * (cpsclickbuttonmult ** (cps + 1))); //update the price of cps
+	
 	cpptracker.textContent = cpp + " Clicks per Press"; //update the clicks per press label
 	counter.textContent = Math.round(clicks) + " Clicks"; //update the clicks label
-	cpstracker.textContent = (cps - 1) + " Clicks per Second"; //update the clicks per second label
+	cpstracker.textContent = cps + " Clicks per Second"; //update the clicks per second label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
 }
