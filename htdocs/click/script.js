@@ -12,6 +12,14 @@ const counter = document.getElementById("counter"); //text for each click
 const cpptracker = document.getElementById("cpptracker"); //click per press tracker
 const exclickbutton = document.getElementById("exclickbutton"); //button to buy extra clicks
 
+//run loaded() when the window is loaded
+window.onload = loaded();
+
+//when the page is loaded
+function loaded() {
+	updateLabels(); //update the labels
+}
+
 //when main button clicked
 function clickd() {
 	clicks += cpp; //add the cpp to clicks
