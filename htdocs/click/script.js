@@ -35,7 +35,7 @@ function loaded() {
 
 //every tenth of a second
 function cpsTick() {
-	clicks += (cps - 1) / 10; //add a tenth of cps to clicks
+	clicks += cps / 10; //add a tenth of cps to clicks
 	updateLabels(); //update the labels
 }
 
@@ -70,7 +70,7 @@ function cpsclick() {
 //update costs
 function updateCosts() {
 	exclickcost = Math.round(baseexclickcost * (exclickpricemult ** (cpp + 1))); //update the price of cpp
-	cpsclickcost = Math.round(basecpscost * (cpsclickbuttonmult ** (cps + 1))); //update the price of cps
+	cpsclickcost = Math.round(basecpscost * (cpsclickpricemult ** (cps + 1))); //update the price of cps
 }
 
 //update labels
