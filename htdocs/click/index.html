@@ -10,13 +10,14 @@
 		<h1>generic clicker</h1>
 		<h3 id="counter">0 Clicks</h3>
 		<h4 id="cpptracker"> 1 Clicks per Press</h4>
+		<h4 id="cpstracke">0 Clicks per Second</h4>
 		
 		<button id="clickbutton" onclick="clickd()" tabindex="-1">Click</button>
 
 		<div id="upgrades">
 			<h2>Upgrades</h2>
 			<button onclick="exclick()" class="upgradebutton" id="exclickbutton">Extra Click - 10c</button>
-			<button class="upgradebutton">button 2</button>
+			<button onclick="cpsclick()" class="upgradebutton" id="cpsclickbutton">+1 Click per Second - 50c</button>
 		</div>
 		
 		<script src="/click/script.js"></script>
