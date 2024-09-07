@@ -24,7 +24,7 @@ function exclick() {
 	if (clicks >= exclickcost) {
 		clicks -= exclickcost; //subtract the cost
 		++cpp; //add 1 to the cpp
-		exclickcost = math.round(exclickcost * exclickpricemult); //update the price
+		exclickcost = Math.round(exclickcost * exclickpricemult); //update the price
 		updateLabels(); //update the labels
 	}  
 }
