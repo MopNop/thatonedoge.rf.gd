@@ -5,9 +5,9 @@ var cps = 0; //clicks per second
 
 
 //upgrades
-const baseexclickcost = 10; //base cost of extra click
+const baseexclickcost = 10 / 1.2; //base cost of extra click
 const exclickpricemult = 1.2; //extra click price multiplier
-const basecpscost = 50; //base cost of click per second
+const basecpscost = 50 / 1.5; //base cost of click per second
 const cpsclickpricemult = 1.5; //click per second price multiplier
 
 var exclickcost = 10;
@@ -69,7 +69,7 @@ function cpsclick() {
 
 //update costs
 function updateCosts() {
-	exclickcost = Math.round(baseexclickcost * (exclickpricemult ** (cpp + 1))); //update the price of cpp
+	exclickcost = Math.round(baseexclickcost * (exclickpricemult ** cpp)); //update the price of cpp
 	cpsclickcost = Math.round(basecpscost * (cpsclickpricemult ** (cps + 1))); //update the price of cps
 }
 
