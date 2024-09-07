@@ -37,6 +37,7 @@ function loaded() {
 function cpsTick() {
 	clicks += cps / 10; //add a tenth of cps to clicks
 	updateLabels(); //update the labels
+	updateCosts(); //hehe this is slow 
 }
 
 //when main button clicked
