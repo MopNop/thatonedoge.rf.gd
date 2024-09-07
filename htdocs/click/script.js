@@ -57,7 +57,7 @@ function cpsclick() {
 	if (clicks >= cpsclickcost) {
 		clicks -= cpsclickcost; //subtract the cost
 		++cps; //add 1 to the cps
-		cpsclickcost = Math.round(50 * (1.25 ** cps); //update the price
+		cpsclickcost = Math.round(50 * (1.25 ** cps)); //update the price
 		updateLabels(); //update the labels
 	}
 }
