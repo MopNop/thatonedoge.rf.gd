@@ -16,9 +16,9 @@ var intervalID = window.setInterval(cpsTick, 100);
 const clickbutton = document.getElementById("clickbutton"); //button that you click
 const counter = document.getElementById("counter"); //text for each click
 const cpptracker = document.getElementById("cpptracker"); //click per press tracker
-const cpptracker = document.getElementById("cpstracker"); //clicks per second tracker
+const cpstracker = document.getElementById("cpstracker"); //clicks per second tracker
 const exclickbutton = document.getElementById("exclickbutton"); //button to buy extra clicks
-const exclickbutton = document.getElementById("cpsclickbutton"); //button to buy clicks per second
+const cpsclickbutton = document.getElementById("cpsclickbutton"); //button to buy clicks per second
 
 //run loaded() when the window is loaded
 window.onload = loaded();
