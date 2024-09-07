@@ -4,12 +4,13 @@ var cpp = 1; //clicks per press
 
 //upgrades
 var exclickcost = 10; //cost of extra click
-var exclickpricemult = 0.2; //extra click price multiplier
+var exclickpricemult = 1.2; //extra click price multiplier
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
 const counter = document.getElementById("counter"); //text for each click
 const cpptracker = document.getElementById("cpptracker"); //click per press tracker
+const exclickbutton = document.getElementById("exclickbutton"); //button to buy extra clicks
 
 //when main button clicked
 function clickd() {
@@ -23,18 +24,19 @@ function exclick() {
 	if (clicks >= exclickcost) {
 		clicks -= exclickcost; //subtract the cost
 		++cpp; //add 1 to the cpp
-		exclickcost = exclickcost * exclickpricemult; //update the price
+		exclickcost = math.round(exclickcost * exclickpricemult); //update the price
 		updateLabels(); //update the labels
 	}  
 }
 
 //update labels
 function updateLabels() {
-	cpptracker.textContent = cpp + " clicks per press"; //update the clicks per press label
+	cpptracker.textContent = cpp + " Clicks per Press"; //update the clicks per press label
 	counter.textContent = clicks + " Clicks"; //update the clicks label
+	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 }
 
-//echos weird ass solution to unfocused the button
+//echos weird ass solution to unfocus the button
 document.querySelectorAll("button").forEach( function(item) {
     item.addEventListener('focus', function() {
         this.blur();
