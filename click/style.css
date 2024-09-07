@@ -1,0 +1,35 @@
+body {
+	font-size: 18px;
+	text-align: center;
+	background: #181825;
+	color: #cdd6f4;
+	font-family: monospace;
+	margin-top: 30px;
+}
+
+#clickbutton {
+	position: relative;
+	top: 300px;
+	border-radius: 30px;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	font-size: 13px;
+	font-family: sans-serif;
+}
+
+#upgrades {
+	position: absolute;
+	display: grid;
+	grid-template-columns: 1fr;
+	right: 30px;
+}
+
+.upgradebutton {
+	margin: 5px;
+	padding-top: 2px;
+	padding-bottom: 4px;
+	border-radius: 30px;
+}
