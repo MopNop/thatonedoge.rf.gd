@@ -2,6 +2,26 @@ body {
     background-color: #181825;
     color: #cdd6f4;
     font-family: monospace;
-    text-align: center;
     font-size: 20px;
 }
+
+#top {
+    text-align: center;
+}
+
+button {
+    border-radius: 7px;
+    width: 150px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #cba6f7;
+    font-weight: 500;
+    border-color: #cba6f7;
+    border-width: 0px;
+    cursor: pointer;
+    box-shadow: 5px 5px 7px #11111b;
+    
+}
+
