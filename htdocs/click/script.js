@@ -3,14 +3,18 @@ var clicks = 0; //amount of clicks
 var cpp = 1; //clicks per press
 var cps = 0; //clicks per second
 
+
 //upgrades
-var exclickcost = 10; //cost of extra click
-var exclickpricemult = 1.2; //extra click price multiplier
-var cpsclickcost = 50; //cost of click per second
-var cpsclickpricemult = 1.5; //click per second price multiplier
+const baseexclickcost = 10 / 1.2; //base cost of extra click
+const exclickpricemult = 1.2; //extra click price multiplier
+const basecpscost = 50 / 1.5; //base cost of click per second
+const cpsclickpricemult = 1.5; //click per second price multiplier
+
+var exclickcost = 10;
+var cpsclickcost = 50;
 
 //misc vars
-var intervalID = window.setInterval(cpsTick, 100);
+var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
@@ -26,12 +30,14 @@ window.onload = loaded();
 //when the page is loaded
 function loaded() {
 	updateLabels(); //update the labels
+	updateCosts(); //update the costs
 }
 
 //every tenth of a second
 function cpsTick() {
 	clicks += cps / 10; //add a tenth of cps to clicks
-	updateLabels();
+	updateLabels(); //update the labels
+	updateCosts(); //hehe this is slow 
 }
 
 //when main button clicked
@@ -46,7 +52,7 @@ function exclick() {
 	if (clicks >= exclickcost) {
 		clicks -= exclickcost; //subtract the cost
 		++cpp; //add 1 to the cpp
-		exclickcost = Math.round(exclickcost * exclickpricemult); //update the price
+		updateCosts(); //update the costs
 		updateLabels(); //update the labels
 	}  
 }
@@ -57,9 +63,15 @@ function cpsclick() {
 	if (clicks >= cpsclickcost) {
 		clicks -= cpsclickcost; //subtract the cost
 		++cps; //add 1 to the cps
-		cpsclickcost = Math.round(cpsclickcost * cpsclickpricemult); //update the price
+		updateCosts(); //update the costs
 		updateLabels(); //update the labels
 	}
+}
+
+//update costs
+function updateCosts() {
+	exclickcost = Math.round(baseexclickcost * (exclickpricemult ** cpp)); //update the price of cpp
+	cpsclickcost = Math.round(basecpscost * (cpsclickpricemult ** (cps + 1))); //update the price of cps
 }
 
 //update labels
@@ -69,6 +81,28 @@ function updateLabels() {
 	cpstracker.textContent = cps + " Clicks per Second"; //update the clicks per second label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
+}
+
+//doooot
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue + ";";
+}
+
+//copyin code from the internet doot doot doot do
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 //echos weird ass solution to unfocus the button
