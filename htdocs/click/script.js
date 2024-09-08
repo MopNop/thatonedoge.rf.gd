@@ -83,12 +83,12 @@ function updateLabels() {
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
 }
 
-//doooot
+//Sets a cookie
 function setCookie(cname, cvalue) {
   document.cookie = cname + "=" + cvalue + ";";
 }
 
-//copyin code from the internet doot doot doot do
+//Gets a cookie
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
