@@ -1,8 +1,18 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     background-color: #181825;
     color: #cdd6f4;
     font-family: monospace;
     font-size: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
 }
 
 #top {
@@ -25,3 +35,6 @@ button {
     color: #1e1e2e;
 }
 
+a {
+    color: #89b4fa;
+}
