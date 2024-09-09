@@ -22,6 +22,9 @@ const cpptracker = document.getElementById("cpptracker"); //click per press trac
 const cpstracker = document.getElementById("cpstracker"); //clicks per second tracker
 const exclickbutton = document.getElementById("exclickbutton"); //button to buy extra clicks
 const cpsclickbutton = document.getElementById("cpsclickbutton"); //button to buy clicks per second
+const multbar = document.getElementById("multiplierprog"); //multiplier progress bar
+const multtext = document.getElementById("multipliernum"); //multiplier text
+
 
 //run loaded() when the window is loaded
 window.onload = loaded();
@@ -42,8 +45,14 @@ function cpsTick() {
 
 //when main button clicked
 function clickd() {
-	clicks += cpp; //add the cpp to clicks
+	let mult = 1
+	clicks += cpp*mult; //add the cpp to clicks
 	updateLabels(); //update the labels
+	if (multbar.value === 20) {
+		multbar.value = 0;
+		multtext.textContent("x "+mult);
+	}
+	++multbar.value
 	save(); //save the game
 }
 
