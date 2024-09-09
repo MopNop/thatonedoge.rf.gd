@@ -62,7 +62,12 @@ function clickd() {
 	updateLabels(); //update the labels
 	if (multbar.value == multbarmax) { //if the bar is at the max value
 		++mult; //up the multiplier
-		multbarmax = Math.round(multbarmax * multbarincrease); //set the maximum to a rounded version of the current max * 1.2
+		const temp = Math.round(multbarmax * multbarincrease)
+		if (multreduct < temp) {
+			multbarmax = temp - multreduct; //set the maximum to a rounded version of the current max * 1.2
+		} else {
+			multbarmax = 1;
+		}
 		multbar.value = 0; //reset the multiplier bar value
 	}
 	else {
@@ -125,7 +130,7 @@ function updateLabels() {
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Reduce Multiplier Clicks - " + multreductcost + "c";
 
-	multbar.max = multbarmax - multreduct;
+	multbar.max = multbarmax;
 	
 	if (clicktimer > 0) { //makes it so that it doesn't go off immediately
 		--clicktimer; //subtract from clicktimer
@@ -140,11 +145,6 @@ function updateLabels() {
 	}
 	else if (multbar.value >= 0 && mult > 1 && !click) { //if the bar value is counting down and at 0
 		multbarmax = multbarmax / multbarincrease; //reduce the max by 2
-		if (multreduct < multbarmax) {
-			multbarmax = multbarmax - multreduct;
-		} else {
-			multbarmax = 1;
-		}
 		multbar.value = multbarmax; //set the value to the max
 		--mult; //reduce the multiplier
 	}
