@@ -2,6 +2,7 @@
 var clicks = 0; //amount of clicks
 var cpp = 1; //clicks per press
 var cps = 0; //clicks per second
+multreduct = 0;
 var mult = 1; //cpp multiplier
 
 //upgrades
@@ -92,10 +93,23 @@ function cpsclick() {
 	save(); //save the game
 }
 
+//when reduce mult button clicked
+function multreductclick() {
+	//if affordable
+	if (clicks >= multreductcost) {
+		clicks -= multreductcost; //subtract the cost
+		++multreduct; //add one to mult reduct
+		updateCosts(); //update the costs
+		updateLabels(); //update the labels
+	}
+}
+
+
 //update costs
 function updateCosts() {
 	exclickcost = priceEquation(baseexclickcost, exclickpricemult, cpp); //update the price of cpp
 	cpsclickcost = priceEquation(basecpscost, cpsclickpricemult, cps, 1); //update the price of cps
+	multreductcost = priceEquation(basemultreductcost, multreductpricemult, multreduct, 1); //update the price of mult reduction
 }
 
 //update labels
@@ -107,7 +121,7 @@ function updateLabels() {
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
 
-	multbar.max = multbarmax;
+	multbar.max = multbarmax - multreduct;
 	
 	if (clicktimer > 0) { //makes it so that it doesn't go off immediately
 		--clicktimer; //subtract from clicktimer
