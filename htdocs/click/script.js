@@ -89,16 +89,14 @@ function updateLabels() {
 
 //save the game
 function save() {
-	if(getCookie("clicks") != "NaN" && getCookie("clicks") != "") {
-		setCookie("clicks", clicks); //save the clicks
-		setCookie("cpp", cpp); //save the cpp
-		setCookie("cps", cps); //save the cps
-	}
+	setCookie("clicks", clicks); //save the clicks
+	setCookie("cpp", cpp); //save the cpp
+	setCookie("cps", cps); //save the cps
 }
 
 //load the game
 function load() {
-	if(getCookie("clicks") != "NaN") {
+	if(getCookie("clicks") != "NaN" && getCookie("clicks") != "") {
 		clicks = parseFloat(getCookie("clicks")); //load the clicks
 		cpp = parseFloat(getCookie("cpp")); //load the cpp
 		cps = parseFloat(getCookie("cps")); //load the cps
