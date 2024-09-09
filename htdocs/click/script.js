@@ -196,8 +196,7 @@ function clearData() {
     document.cookie = "cps=0";
 	document.cookie = "multreduct=0"
 	setVars(); //reset the variables
-	updateLabels(); //update the labels
-	updateCosts(); //update the costs
+	loaded(); //update labels and stuff
 }
 
 //sets some variables
@@ -206,7 +205,7 @@ function setVars() {
 	clicks = 0; //amount of clicks
 	cpp = 1; //clicks per press
 	cps = 0; //clicks per second
-	multbar.max = 10;
+	multbarmax = 20;
 	mult = 1;
 	multreduct = 0
 }
