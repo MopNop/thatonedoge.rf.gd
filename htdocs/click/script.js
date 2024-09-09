@@ -62,16 +62,11 @@ function clickd() {
 	updateLabels(); //update the labels
 	if (multbar.value == multbarmax) { //if the bar is at the max value
 		++mult; //up the multiplier
-		const temp = Math.round(multbarmax * multbarincrease)
-		if (multreduct < temp) {
-			multbarmax = temp - multreduct; //set the maximum to a rounded version of the current max * 1.2
-		} else {
-			multbarmax = 1;
-		}
+		multbarmax = Math.round(multbarmax * multbarincrease); //set the maximum to a rounded version of the current max * 1.2
 		multbar.value = 0; //reset the multiplier bar value
 	}
 	else {
-		++multbar.value; //increase the value 
+		multbar.value + multreduct; //increase the value 
 	}
 	save(); //save the game
 }
