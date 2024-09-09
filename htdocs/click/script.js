@@ -2,6 +2,7 @@
 var clicks = 0; //amount of clicks
 var cpp = 1; //clicks per press
 var cps = 0; //clicks per second
+var mult = 1; //cpp multiplier
 
 //upgrades
 const baseexclickcost = 10 / 1.2; //base cost of extra click
@@ -14,9 +15,9 @@ var cpsclickcost = 50;
 
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
-var mult = 1;
-var isclick = false;
+var isclick = false; //honestly i have no clue what the fuck you're doing here echo
 var clicktimer = 0; // this just makes it so the bar doenst immediately go down when you stop clicking
+
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
 const counter = document.getElementById("counter"); //text for each click
@@ -51,13 +52,13 @@ function clickd() {
 	clicktimer = 3;
 	clicks += cpp*mult; //add the cpp to clicks
 	updateLabels(); //update the labels
-	if (multbar.value == multbar.max) {
-		++mult
-		multbar.max += 2
-		multbar.value = 0;
+	if (multbar.value == multbar.max) { //if the bar is at the max value
+		++mult //up the multiplier
+		multbar.max += 2 //up the multiplier bar max
+		multbar.value = 0; //reset the multiplier bar value
 	}
 	else {
-		++multbar.value
+		++multbar.value //increase the value 
 	}
 	save(); //save the game
 }
@@ -101,22 +102,23 @@ function updateLabels() {
 	cpstracker.textContent = cps + " Clicks per Second"; //update the clicks per second label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
-	multtext.textContent = "x"+mult;
-	if (clicktimer > 0) {
-		--clicktimer;
+	multtext.textContent = "x"+mult; //set the multiplier text
+	
+	if (clicktimer > 0) { //makes it so that it doesn't go off immediately
+		--clicktimer; //subtract from clicktimer
 	}
 	else {
-		click = false;
+		click = false; //start counting down
 	}
 
 	
-	if (multbar.value > 0 && !click) {
-	multbar.value -= 0.4 * (mult*0.2);
+	if (multbar.value > 0 && !click) { //if the bar value is counting down and greater than 0
+		multbar.value -= 0.4 * (mult*0.2); //count the bar down
 	}
-	else if (multbar.value >= 0 && mult > 1 && !click) {
-		multbar.value = multbar.max;
-		--mult;
-		multbar.max -= 2;
+	else if (multbar.value >= 0 && mult > 1 && !click) { //if the bar value is counting down and at 0
+		multbar.max -= 2; //reduce the max by 2
+		multbar.value = multbar.max; //set the value to the max
+		--mult; //reduce the multiplier
 	}
 	
 	
