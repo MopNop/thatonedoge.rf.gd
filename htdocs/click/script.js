@@ -139,7 +139,8 @@ function updateLabels() {
 		multbar.value -= 0.4 * (mult*0.2); //count the bar down
 	}
 	else if (multbar.value >= 0 && mult > 1 && !click) { //if the bar value is counting down and at 0
-		multbar.max -= 2; //reduce the max by 2
+		multbarmax /= multbarincrease; //reduce the max by 2
+		updateLabels();
 		multbar.value = multbar.max; //set the value to the max
 		--mult; //reduce the multiplier
 	}
@@ -225,7 +226,7 @@ function goldenClickTick() {
 }
 
 function goldenClick () {
-	return
+	return //if you dont start commenting your code im going to kiss you i mean kiss you i mean kill you
 }
 
 
