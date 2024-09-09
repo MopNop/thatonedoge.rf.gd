@@ -66,7 +66,7 @@ function clickd() {
 		multbar.value = 0; //reset the multiplier bar value
 	}
 	else {
-		multbar.value + multreduct; //increase the value 
+		multbar.value = multbar.value + multreduct; //increase the value 
 	}
 	save(); //save the game
 }
