@@ -1,0 +1,41 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #181825;
+    color: #cdd6f4;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+
+}
+
+#top {
+    text-align: center;
+}
+
+button {
+    border-radius: 7px;
+    width: 150px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #cba6f7;
+    font-weight: 500;
+    border-color: #cba6f7;
+    border-width: 0px;
+    cursor: pointer;
+    box-shadow: 5px 5px 7px #11111b;
+    color: #1e1e2e;
+}
+
+a {
+    color: #89b4fa;
+}

@@ -31,19 +31,21 @@ window.onload = loaded();
 function loaded() {
 	updateLabels(); //update the labels
 	updateCosts(); //update the costs
+	load(); //load the last save
 }
 
 //every tenth of a second
 function cpsTick() {
 	clicks += cps / 10; //add a tenth of cps to clicks
 	updateLabels(); //update the labels
-	updateCosts(); //hehe this is slow 
+	updateCosts(); //hehe this is slow
 }
 
 //when main button clicked
 function clickd() {
 	clicks += cpp; //add the cpp to clicks
 	updateLabels(); //update the labels
+	save(); //save the game
 }
 
 //when extra click button clicked
@@ -54,7 +56,8 @@ function exclick() {
 		++cpp; //add 1 to the cpp
 		updateCosts(); //update the costs
 		updateLabels(); //update the labels
-	}  
+	}
+	save(); //save the game
 }
 
 //when click per second button clicked
@@ -66,6 +69,7 @@ function cpsclick() {
 		updateCosts(); //update the costs
 		updateLabels(); //update the labels
 	}
+	save(); //save the game
 }
 
 //update costs
@@ -81,6 +85,24 @@ function updateLabels() {
 	cpstracker.textContent = cps + " Clicks per Second"; //update the clicks per second label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
+}
+
+//save the game
+function save() {
+	if(getCookie("clicks") != "NaN") {
+		setCookie("clicks", clicks); //save the clicks
+		setCookie("cpp", cpp); //save the cpp
+		setCookie("cps", cps); //save the cps
+	}
+}
+
+//load the game
+function load() {
+	if(getCookie("clicks") != "NaN") {
+		clicks = parseFloat(getCookie("clicks")); //load the clicks
+		cpp = parseFloat(getCookie("cpp")); //load the cpp
+		cps = parseFloat(getCookie("cps")); //load the cps
+	}
 }
 
 //Sets a cookie
@@ -103,6 +125,13 @@ function getCookie(cname) {
     }
   }
   return "";
+}
+
+//clears the cookies
+function clearCookies() {
+    document.cookie = "clicks=0";
+    document.cookie = "cpp=1";
+    document.cookie = "cps=0";
 }
 
 //echos weird ass solution to unfocus the button
