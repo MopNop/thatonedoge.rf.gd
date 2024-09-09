@@ -21,7 +21,7 @@ var multreductcost;
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
 var click = false; //what
 var clicktimer = 0; // this just makes it so the bar doenst immediately go down when you stop clicking
-var multbarmax = 20 //maximum of the multiplier bar
+var multbarmax = 20; //maximum of the multiplier bar
 const multbarincrease = 1.2; //multiplier for the max
 var goldenClickTime = 0;
 
