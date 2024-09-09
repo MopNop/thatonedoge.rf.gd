@@ -51,8 +51,9 @@ function clickd() {
 	clicktimer = 3;
 	clicks += cpp*mult; //add the cpp to clicks
 	updateLabels(); //update the labels
-	if (multbar.value == 20) {
+	if (multbar.value == multbar.max) {
 		++mult
+		multbar.max += 5
 		multbar.value = 0;
 	}
 	else {
