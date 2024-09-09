@@ -191,7 +191,7 @@ function setVars() {
 
 //function for the equation for calculating prices
 function priceEquation(basecost, costmult, unit, add = 0) {
-	Math.round(basecost * (costmult ** (unit + add)));
+	return Math.round(basecost * (costmult ** (unit + add)));
 }
 
 //echos weird ass solution to unfocus the button
