@@ -53,7 +53,7 @@ function clickd() {
 	updateLabels(); //update the labels
 	if (multbar.value == multbar.max) {
 		++mult
-		multbar.max += 5
+		multbar.max += 2
 		multbar.value = 0;
 	}
 	else {
@@ -116,6 +116,7 @@ function updateLabels() {
 	else if (multbar.value >= 0 && mult > 1 && !click) {
 		multbar.value = multbar.max;
 		--mult;
+		multbar.max -= 2;
 	}
 	
 	
