@@ -140,8 +140,8 @@ function updateLabels() {
 	}
 	else if (multbar.value >= 0 && mult > 1 && !click) { //if the bar value is counting down and at 0
 		multbarmax = multbar / multbarincrease; //reduce the max by 2
+		multbarmax = multbarmax - multreduct;
 		multbar.value = multbarmax; //set the value to the max
-		multbar.max = multbarmax - multreduct;
 		--mult; //reduce the multiplier
 	}
 	goldenClickTick();
