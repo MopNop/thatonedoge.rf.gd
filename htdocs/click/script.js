@@ -59,7 +59,7 @@ function clickd() {
 	updateLabels(); //update the labels
 	if (multbar.value == multbar.max) { //if the bar is at the max value
 		++mult; //up the multiplier
-		multbar.max = Math.round(multbar.max * multbarincrease); //set the maximum to a rounded version of the current max * 1.2
+		multbarmax = Math.round(multbar.max * multbarincrease); //set the maximum to a rounded version of the current max * 1.2
 		multbar.value = 0; //reset the multiplier bar value
 	}
 	else {
