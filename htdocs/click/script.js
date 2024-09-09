@@ -222,7 +222,7 @@ function goldenClickTick() {
 }
 
 function goldenClick () {
-	ret
+	return
 }
 
 
