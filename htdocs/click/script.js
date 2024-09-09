@@ -176,7 +176,8 @@ function setVars() {
 	clicks = 0; //amount of clicks
 	cpp = 1; //clicks per press
 	cps = 0; //clicks per second
-
+	multbar.max = 10;
+	mult = 1;
 	exclickcost = 10;
 	cpsclickcost = 50;
 }
