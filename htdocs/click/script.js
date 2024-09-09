@@ -13,9 +13,9 @@ const cpsclickpricemult = 1.25; //click per second price multiplier
 const basemultreductcost = 500 / 2.5; //multbar reduction base cost
 const multreductpricemult = 2.5; //multbar reduction price multiplier
 
-var exclickcost = 10;
-var cpsclickcost = 50;
-var multreductcost = 500;
+var exclickcost;
+var cpsclickcost;
+var multreductcost;
 
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
@@ -207,8 +207,7 @@ function setVars() {
 	cps = 0; //clicks per second
 	multbar.max = 10;
 	mult = 1;
-	exclickcost = 10;
-	cpsclickcost = 50;
+	multreduct = 0
 }
 
 //function for the equation for calculating prices
