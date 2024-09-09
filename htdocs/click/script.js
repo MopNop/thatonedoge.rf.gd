@@ -54,7 +54,7 @@ function clickd() {
 	updateLabels(); //update the labels
 	if (multbar.value == multbar.max) { //if the bar is at the max value
 		++mult //up the multiplier
-		multbar.max += 2 //up the multiplier bar max
+		multbar.max *= 1.2 //up the multiplier bar max
 		multbar.value = 0; //reset the multiplier bar value
 	}
 	else {
