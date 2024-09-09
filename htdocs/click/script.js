@@ -96,7 +96,7 @@ function updateCosts() {
 
 //update labels
 function updateLabels() {
-	cpptracker.textContent = cpp + " Clicks per Press"; //update the clicks per press label
+	cpptracker.textContent = cpp + " Clicks per Press (x" + mult + ")"; //update the clicks per press label
 	counter.textContent = Math.round(clicks) + " Clicks"; //update the clicks label
 	cpstracker.textContent = cps + " Clicks per Second"; //update the clicks per second label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
