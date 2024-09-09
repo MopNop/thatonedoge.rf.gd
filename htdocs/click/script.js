@@ -14,7 +14,9 @@ var cpsclickcost = 50;
 
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
-
+var mult = 1;
+var isclick = false;
+var clicktimer = 0; // this just makes it so the bar doenst immediately go down when you stop clicking
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
 const counter = document.getElementById("counter"); //text for each click
@@ -45,14 +47,17 @@ function cpsTick() {
 
 //when main button clicked
 function clickd() {
-	let mult = 1
+	click = true;
+	clicktimer = 3;
 	clicks += cpp*mult; //add the cpp to clicks
 	updateLabels(); //update the labels
-	if (multbar.value === 20) {
+	if (multbar.value == 20) {
+		++mult
 		multbar.value = 0;
-		multtext.textContent("x "+mult);
 	}
-	++multbar.value
+	else {
+		++multbar.value
+	}
 	save(); //save the game
 }
 
@@ -86,6 +91,8 @@ function updateCosts() {
 	cpsclickcost = Math.round(basecpscost * (cpsclickpricemult ** (cps + 1))); //update the price of cps
 }
 
+
+
 //update labels
 function updateLabels() {
 	cpptracker.textContent = cpp + " Clicks per Press"; //update the clicks per press label
@@ -93,6 +100,24 @@ function updateLabels() {
 	cpstracker.textContent = cps + " Clicks per Second"; //update the clicks per second label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
+	multtext.textContent = "x"+mult;
+	if (clicktimer > 0) {
+		--clicktimer;
+	}
+	else {
+		click = false;
+	}
+
+	
+	if (multbar.value > 0 && !click) {
+	multbar.value -= 0.4;
+	}
+	else if (multbar.value >= 0 && mult > 1 && !click) {
+		multbar.value = multbar.max;
+		--mult;
+	}
+	
+	
 }
 
 //save the game
