@@ -9,14 +9,19 @@ const baseexclickcost = 10 / 1.1; //base cost of extra click
 const exclickpricemult = 1.1; //extra click price multiplier
 const basecpscost = 50 / 1.25; //base cost of click per second
 const cpsclickpricemult = 1.25; //click per second price multiplier
+const basemultreductcost = 500 / 2.5; //multbar reduction base cost
+const multreductpricemult = 2.5; //multbar reduction price multiplier
 
 var exclickcost = 10;
 var cpsclickcost = 50;
+var multreductcost = 500;
 
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
 var click = false; //what
 var clicktimer = 0; // this just makes it so the bar doenst immediately go down when you stop clicking
+var multbarmax = 20 //maximum of the multiplier bar
+const multbarincrease = 1.2; //multiplier for the max
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
@@ -53,12 +58,12 @@ function clickd() {
 	clicks += cpp*mult; //add the cpp to clicks
 	updateLabels(); //update the labels
 	if (multbar.value == multbar.max) { //if the bar is at the max value
-		++mult //up the multiplier
-		multbar.max *= 1.2 //up the multiplier bar max
+		++mult; //up the multiplier
+		multbar.max = Math.round(multbar.max * multbarincrease); //set the maximum to a rounded version of the current max * 1.2
 		multbar.value = 0; //reset the multiplier bar value
 	}
 	else {
-		++multbar.value //increase the value 
+		++multbar.value; //increase the value 
 	}
 	save(); //save the game
 }
@@ -89,11 +94,9 @@ function cpsclick() {
 
 //update costs
 function updateCosts() {
-	exclickcost = Math.round(baseexclickcost * (exclickpricemult ** cpp)); //update the price of cpp
-	cpsclickcost = Math.round(basecpscost * (cpsclickpricemult ** (cps + 1))); //update the price of cps
+	exclickcost = priceEquation(baseexclickcost, exclickpricemult, cpp); //update the price of cpp
+	cpsclickcost = priceEquation(basecpscost, cpsclickpricemult, cps, 1); //update the price of cps
 }
-
-
 
 //update labels
 function updateLabels() {
@@ -103,6 +106,8 @@ function updateLabels() {
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
+
+	multbar.max = multbarmax;
 	
 	if (clicktimer > 0) { //makes it so that it doesn't go off immediately
 		--clicktimer; //subtract from clicktimer
@@ -182,6 +187,11 @@ function setVars() {
 	mult = 1;
 	exclickcost = 10;
 	cpsclickcost = 50;
+}
+
+//function for the equation for calculating prices
+function priceEquation(basecost, costmult, unit, add = 0) {
+	Math.round(basecost * (costmult ** (unit + add)));
 }
 
 //echos weird ass solution to unfocus the button
