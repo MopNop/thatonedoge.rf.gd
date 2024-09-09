@@ -123,7 +123,7 @@ function updateLabels() {
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
-	multreducttext.textContent = "Reduce Multiplier Clicks - " + multreductcost + "c";
+	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
 
 	multbar.max = multbarmax;
 	
