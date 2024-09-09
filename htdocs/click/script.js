@@ -23,6 +23,7 @@ var click = false; //what
 var clicktimer = 0; // this just makes it so the bar doenst immediately go down when you stop clicking
 var multbarmax = 20 //maximum of the multiplier bar
 const multbarincrease = 1.2; //multiplier for the max
+var goldenClickTime = 0;
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
@@ -139,6 +140,7 @@ function updateLabels() {
 		multbar.value = multbar.max; //set the value to the max
 		--mult; //reduce the multiplier
 	}
+	goldenClickTick();
 	
 	
 }
@@ -207,6 +209,20 @@ function setVars() {
 function priceEquation(basecost, costmult, unit, add = 0) {
 	return Math.round(basecost * (costmult ** (unit + add)));
 }
+
+function goldenClickTick() {
+	++goldenClickTime;
+	if (goldenClickTime == 1000000) {
+		console.log("GOLDEN CLICK");
+		goldenClickTime = 0;
+	}
+}
+
+function goldenClick () {
+	return
+}
+
+
 
 //echos weird ass solution to unfocus the button
 document.querySelectorAll("button").forEach( function(item) {
