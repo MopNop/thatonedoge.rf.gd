@@ -1,18 +1,3 @@
-//statistics
-var clicks = 0; //amount of clicks
-var cpp = 1; //clicks per press
-var cps = 0; //clicks per second
-
-
-//upgrades
-const baseexclickcost = 10 / 1.2; //base cost of extra click
-const exclickpricemult = 1.2; //extra click price multiplier
-const basecpscost = 50 / 1.5; //base cost of click per second
-const cpsclickpricemult = 1.5; //click per second price multiplier
-
-var exclickcost = 10;
-var cpsclickcost = 50;
-
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
 
@@ -32,6 +17,7 @@ function loaded() {
 	updateLabels(); //update the labels
 	updateCosts(); //update the costs
 	load(); //load the last save
+	setVars(); //sets the variables
 }
 
 //every tenth of a second
@@ -126,10 +112,29 @@ function getCookie(cname) {
 }
 
 //clears the cookies
-function clearCookies() {
+function clearData() {
     document.cookie = "clicks=0";
     document.cookie = "cpp=1";
     document.cookie = "cps=0";
+	setVars(); //reset the variables
+}
+
+//sets some variables
+	function setVars() {
+	//statistics
+	var clicks = 0; //amount of clicks
+	var cpp = 1; //clicks per press
+	var cps = 0; //clicks per second
+
+
+	//upgrades
+	const baseexclickcost = 10 / 1.2; //base cost of extra click
+	const exclickpricemult = 1.2; //extra click price multiplier
+	const basecpscost = 50 / 1.5; //base cost of click per second
+	const cpsclickpricemult = 1.5; //click per second price multiplier
+
+	var exclickcost = 10;
+	var cpsclickcost = 50;
 }
 
 //echos weird ass solution to unfocus the button
