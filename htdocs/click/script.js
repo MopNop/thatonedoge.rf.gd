@@ -2,7 +2,7 @@
 var clicks = 0; //amount of clicks
 var cpp = 1; //clicks per press
 var cps = 0; //clicks per second
-var multreduct = 0;
+var multreduct = 0; //mult reduction
 var mult = 1; //cpp multiplier
 
 //upgrades
@@ -104,6 +104,7 @@ function multreductclick() {
 		updateCosts(); //update the costs
 		updateLabels(); //update the labels
 	}
+	save(); //save the game
 }
 
 
@@ -192,6 +193,7 @@ function clearData() {
     document.cookie = "clicks=0";
     document.cookie = "cpp=1";
     document.cookie = "cps=0";
+	document.cookie = "multreduct=0"
 	setVars(); //reset the variables
 	updateLabels(); //update the labels
 	updateCosts(); //update the costs
