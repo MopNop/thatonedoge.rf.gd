@@ -110,7 +110,7 @@ function updateLabels() {
 
 	
 	if (multbar.value > 0 && !click) {
-	multbar.value -= 0.4;
+	multbar.value -= 0.4 * (mult*0.2);
 	}
 	else if (multbar.value >= 0 && mult > 1 && !click) {
 		multbar.value = multbar.max;
