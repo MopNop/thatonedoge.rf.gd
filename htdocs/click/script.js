@@ -5,8 +5,8 @@ var cps = 0; //clicks per second
 var mult = 1; //cpp multiplier
 
 //upgrades
-const baseexclickcost = 10 / 1.2; //base cost of extra click
-const exclickpricemult = 1.08; //extra click price multiplier
+const baseexclickcost = 10 / 1.1; //base cost of extra click
+const exclickpricemult = 1.1; //extra click price multiplier
 const basecpscost = 50 / 1.5; //base cost of click per second
 const cpsclickpricemult = 1.5; //click per second price multiplier
 
