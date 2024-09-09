@@ -152,6 +152,7 @@ function save() {
 	setCookie("clicks", clicks); //save the clicks
 	setCookie("cpp", cpp); //save the cpp
 	setCookie("cps", cps); //save the cps
+	setCookie("multreduct", multreduct); //save the multreduct
 }
 
 //load the game
@@ -160,6 +161,7 @@ function load() {
 		clicks = parseFloat(getCookie("clicks")); //load the clicks
 		cpp = parseFloat(getCookie("cpp")); //load the cpp
 		cps = parseFloat(getCookie("cps")); //load the cps
+		multreduct = parseFloat(getCookie("multreduct")); //load the multreduct
 	}
 }
 
