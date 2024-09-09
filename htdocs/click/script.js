@@ -15,7 +15,6 @@ var cpsclickcost = 50;
 
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
-var isclick = false; //honestly i have no clue what the fuck you're doing here echo
 var click = false; //what
 var clicktimer = 0; // this just makes it so the bar doenst immediately go down when you stop clicking
 
