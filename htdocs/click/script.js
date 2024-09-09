@@ -2,7 +2,7 @@
 var clicks = 0; //amount of clicks
 var cpp = 1; //clicks per press
 var cps = 0; //clicks per second
-multreduct = 0;
+var multreduct = 0;
 var mult = 1; //cpp multiplier
 
 //upgrades
@@ -33,6 +33,7 @@ const exclickbutton = document.getElementById("exclickbutton"); //button to buy 
 const cpsclickbutton = document.getElementById("cpsclickbutton"); //button to buy clicks per second
 const multbar = document.getElementById("multiplierprog"); //multiplier progress bar
 const multtext = document.getElementById("multipliernum"); //multiplier text
+const multreducttext = document.getElementById("multreductbutton"); //multiplier button text
 
 
 //run loaded() when the window is loaded
@@ -120,6 +121,7 @@ function updateLabels() {
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
+	multreducttext.textContent = "Reduce Multiplier Clicks - " + multreductcost + "c";
 
 	multbar.max = multbarmax - multreduct;
 	
