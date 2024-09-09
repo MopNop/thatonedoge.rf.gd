@@ -10,8 +10,8 @@ const baseexclickcost = 10 / 1.1; //base cost of extra click
 const exclickpricemult = 1.1; //extra click price multiplier
 const basecpscost = 50 / 1.25; //base cost of click per second
 const cpsclickpricemult = 1.25; //click per second price multiplier
-const basemultreductcost = 500 / 2.5; //multbar reduction base cost
-const multreductpricemult = 2.5; //multbar reduction price multiplier
+const basemultreductcost = 250 / 1.75; //multbar reduction base cost
+const multreductpricemult = 1.75; //multbar reduction price multiplier
 
 var exclickcost;
 var cpsclickcost;
