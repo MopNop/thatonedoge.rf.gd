@@ -60,7 +60,7 @@ function clickd() {
 	clicktimer = 3;
 	clicks += cpp*mult; //add the cpp to clicks
 	updateLabels(); //update the labels
-	if (multbar.value == multbar.max) { //if the bar is at the max value
+	if (multbar.value == multbarmax) { //if the bar is at the max value
 		++mult; //up the multiplier
 		multbarmax = Math.round(multbarmax * multbarincrease); //set the maximum to a rounded version of the current max * 1.2
 		multbar.value = 0; //reset the multiplier bar value
@@ -139,9 +139,9 @@ function updateLabels() {
 		multbar.value -= 0.4 * (mult*0.2); //count the bar down
 	}
 	else if (multbar.value >= 0 && mult > 1 && !click) { //if the bar value is counting down and at 0
-		multbarmax /= multbarincrease; //reduce the max by 2
-		updateLabels();
-		multbar.value = multbar.max; //set the value to the max
+		multbarmax = multbar / multbarincrease; //reduce the max by 2
+		multbar.value = multbarmax; //set the value to the max
+		multbar.max = multbarmax - multreduct;
 		--mult; //reduce the multiplier
 	}
 	goldenClickTick();
