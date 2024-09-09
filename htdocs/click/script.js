@@ -130,6 +130,8 @@ function clearData() {
     document.cookie = "cpp=1";
     document.cookie = "cps=0";
 	setVars(); //reset the variables
+	updateLabels(); //update the labels
+	updateCosts(); //update the costs
 }
 
 //sets some variables
