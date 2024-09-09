@@ -15,7 +15,7 @@ var cpsclickcost = 50;
 //misc vars
 var intervalID = window.setInterval(cpsTick, 100); //sets a variable for some random shit man idk
 var mult = 1;
-var isclick = false;
+var click = false;
 var clicktimer = 0; // this just makes it so the bar doenst immediately go down when you stop clicking
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
