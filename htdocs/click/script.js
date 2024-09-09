@@ -217,11 +217,12 @@ function goldenClickTick() {
 	if (goldenClickTime == 1000000) {
 		console.log("GOLDEN CLICK");
 		goldenClickTime = 0;
+		goldenClick();
 	}
 }
 
 function goldenClick () {
-	return
+	ret
 }
 
 
