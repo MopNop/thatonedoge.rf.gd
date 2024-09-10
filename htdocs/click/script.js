@@ -239,7 +239,7 @@ if (normal) {
 	})
 } else {
 	document.querySelectorAll("button").forEach( function(item) {
-		item.addEventListener('focus', function() {
+		item.removeEventListener('focus', function() {
 			return;
 		})
 	})
