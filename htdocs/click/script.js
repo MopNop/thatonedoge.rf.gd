@@ -137,7 +137,7 @@ function updateLabels() {
 
 	
 	if (multbar.value > 0 && !click) { //if the bar value is counting down and greater than 0
-		multbar.value -= 0.4 * (mult*0.2); //count the bar down
+		multbar.value -= Math.round((mult * 0.3) * (multbarmax * 0.1)); //count the bar down
 	}
 	else if (multbar.value >= 0 && mult > 1 && !click) { //if the bar value is counting down and at 0
 		multbarmax = multbarmax / multbarincrease; //reduce the max by 2
@@ -231,16 +231,8 @@ function goldenClick () {
 
 
 //echos weird ass solution to unfocus the button
-if (normal) {
-	document.querySelectorAll("button").forEach( function(item) {
-		item.addEventListener('focus', function() {
-			this.blur();
-		})
+document.querySelectorAll("button").forEach( function(item) {
+	item.addEventListener('focus', function() {
+		this.blur();
 	})
-} else {
-	document.querySelectorAll("button").forEach( function(item) {
-		item.removeEventListener('focus', function() {
-			this.blur();
-		})
-	})
-}
+})
