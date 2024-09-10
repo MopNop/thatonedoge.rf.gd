@@ -140,7 +140,7 @@ function updateLabels() {
 		multbar.value -= Math.round((mult * 0.3) * (multbarmax * 0.1)); //count the bar down
 	}
 	else if (multbar.value >= 0 && mult > 1 && !click) { //if the bar value is counting down and at 0
-		multbarmax = multbarmax / multbarincrease; //reduce the max by 2
+		multbarmax = multbarmax * multbarincrease; //reduce the max by 2
 		multbar.value = multbarmax; //set the value to the max
 		--mult; //reduce the multiplier
 	}
