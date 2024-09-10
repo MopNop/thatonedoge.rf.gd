@@ -225,7 +225,7 @@ function goldenClickTick() {
 }
 
 function goldenClick () {
-	return //if you dont start commenting your code im going to kiss you i mean kiss you i mean kill you
+	return; //if you dont start commenting your code im going to kiss you i mean kiss you i mean kill you
 }
 
 
@@ -240,7 +240,7 @@ if (normal) {
 } else {
 	document.querySelectorAll("button").forEach( function(item) {
 		item.removeEventListener('focus', function() {
-			return;
+			this.blur();
 		})
 	})
 }
