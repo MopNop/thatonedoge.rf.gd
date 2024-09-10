@@ -232,7 +232,9 @@ function goldenClick () {
 
 //echos weird ass solution to unfocus the button
 document.querySelectorAll("button").forEach( function(item) {
-    item.addEventListener('focus', function() {
-        this.blur();
-    })
+    item.addEventListener('focus', blurThis())
 })
+
+function blurThis() {
+	this.blur();
+}
