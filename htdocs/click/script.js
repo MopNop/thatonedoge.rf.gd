@@ -237,4 +237,10 @@ if (normal) {
 			this.blur();
 		})
 	})
+} else {
+	document.querySelectorAll("button").forEach( function(item) {
+		item.addEventListener('focus', function() {
+			return;
+		})
+	})
 }
