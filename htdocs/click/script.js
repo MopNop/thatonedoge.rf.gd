@@ -24,6 +24,7 @@ var clicktimer = 0; // this just makes it so the bar doenst immediately go down 
 var multbarmax = 20; //maximum of the multiplier bar
 const multbarincrease = 1.2; //multiplier for the max
 var goldenClickTime = 0;
+var normal = true;
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
@@ -230,8 +231,10 @@ function goldenClick () {
 
 
 //echos weird ass solution to unfocus the button
-document.querySelectorAll("button").forEach( function(item) {
-    item.addEventListener('focus', function() {
-        this.blur();
-    })
-})
+if (normal) {
+	document.querySelectorAll("button").forEach( function(item) {
+		item.addEventListener('focus', function() {
+			this.blur();
+		})
+	})
+}
