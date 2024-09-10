@@ -50,7 +50,7 @@ function loaded() {
 
 //every tenth of a second
 function cpsTick() {
-	clicks += cps / 10; //add a tenth of cps to clicks
+	clicks += cps; //add a cps to clicks
 	updateLabels(); //update the labels
 	updateCosts(); //hehe this is slow
 }
@@ -120,9 +120,9 @@ function updateCosts() {
 function updateLabels() {
 	cpptracker.textContent = cpp + " Clicks per Press (x" + mult + ")"; //update the clicks per press label
 	counter.textContent = Math.round(clicks) + " Clicks"; //update the clicks label
-	cpstracker.textContent = cps + " Clicks per Second"; //update the clicks per second label
+	cpstracker.textContent = (cps * 10)+ " Clicks per Second"; //update the clicks per second label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
-	cpsclickbutton.textContent = "+1 Click per Second - " + cpsclickcost + "c"; //update the click per second cost
+	cpsclickbutton.textContent = "+10 Clicks per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
 
