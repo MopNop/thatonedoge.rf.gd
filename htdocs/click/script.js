@@ -25,6 +25,7 @@ var multbarmax = 20; //maximum of the multiplier bar
 const multbarincrease = 1.2; //multiplier for the max
 var goldenClickTime = 0;
 var normal = true;
+var ascensionMult = 1;
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
@@ -36,6 +37,7 @@ const cpsclickbutton = document.getElementById("cpsclickbutton"); //button to bu
 const multbar = document.getElementById("multiplierprog"); //multiplier progress bar
 const multtext = document.getElementById("multipliernum"); //multiplier text
 const multreducttext = document.getElementById("multreductbutton"); //multiplier button text
+const acensionMultLabel = document.getElementById("ascensionMult");
 
 
 //run loaded() when the window is loaded
@@ -50,7 +52,7 @@ function loaded() {
 
 //every tenth of a second
 function cpsTick() {
-	clicks += cps; //add a cps to clicks
+	updateClick(cps); //add a cps to clicks
 	updateLabels(); //update the labels
 	updateCosts(); //hehe this is slow
 }
@@ -59,7 +61,7 @@ function cpsTick() {
 function clickd() {
 	click = true;
 	clicktimer = 3;
-	clicks += cpp*mult; //add the cpp to clicks
+	updateClick(cpp*mult); //add the cpp to clicks
 	updateLabels(); //update the labels
 	if (multbar.value == multbarmax) { //if the bar is at the max value
 		++mult; //up the multiplier
@@ -125,6 +127,7 @@ function updateLabels() {
 	cpsclickbutton.textContent = "+10 Clicks per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
+	acensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult;
 
 	multbar.max = multbarmax;
 	
@@ -156,6 +159,7 @@ function save() {
 	setCookie("cpp", cpp); //save the cpp
 	setCookie("cps", cps); //save the cps
 	setCookie("multreduct", multreduct); //save the multreduct
+	setCookie("ascMult", ascensionMult);
 }
 
 //load the game
@@ -165,6 +169,7 @@ function load() {
 		cpp = parseFloat(getCookie("cpp")); //load the cpp
 		cps = parseFloat(getCookie("cps")); //load the cps
 		multreduct = parseFloat(getCookie("multreduct")); //load the multreduct
+		acsensionMult = parseFloat(getCookie("ascMult"));
 	}
 }
 
@@ -195,7 +200,8 @@ function clearData() {
     document.cookie = "clicks=0";
     document.cookie = "cpp=1";
     document.cookie = "cps=0";
-	document.cookie = "multreduct=0"
+	document.cookie = "multreduct=0";
+	document.cookie = "ascMult=1";
 	setVars(); //reset the variables
 	loaded(); //update labels and stuff
 }
@@ -225,11 +231,22 @@ function goldenClickTick() {
 	}
 }
 
+function updateClick(clicksToAdd) {
+	clicks += clicksToAdd * ascensionMult;
+}
+
 function goldenClick () {
 	return; //if you dont start commenting your code im going to kiss you i mean kiss you i mean kill you
 }
 
-
+function ascend() {
+	var acensionTemp = clicks ^ 0.1;
+	if(acsensionMult < acensionTemp) {
+		clearData();
+		setCookie("ascMult", ascensionTemp);
+		acsensionMult = acensionTemp;
+	}
+}
 
 //echos weird ass solution to unfocus the button
 document.querySelectorAll("button").forEach( function(item) {
