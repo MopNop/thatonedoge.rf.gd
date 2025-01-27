@@ -37,7 +37,7 @@ const cpsclickbutton = document.getElementById("cpsclickbutton"); //button to bu
 const multbar = document.getElementById("multiplierprog"); //multiplier progress bar
 const multtext = document.getElementById("multipliernum"); //multiplier text
 const multreducttext = document.getElementById("multreductbutton"); //multiplier button text
-const acensionMultLabel = document.getElementById("ascensionMult");
+const ascensionMultLabel = document.getElementById("ascensionMult");
 
 
 //run loaded() when the window is loaded
@@ -127,7 +127,7 @@ function updateLabels() {
 	cpsclickbutton.textContent = "+10 Clicks per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
-	acensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult;
+	ascensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult;
 
 	multbar.max = multbarmax;
 	
@@ -240,11 +240,11 @@ function goldenClick () {
 }
 
 function ascend() {
-	var acensionTemp = clicks ^ 0.1;
-	if(acsensionMult < acensionTemp) {
+	var ascensionTemp = clicks ^ 0.1;
+	if(acsensionMult < ascensionTemp) {
 		clearData();
 		setCookie("ascMult", ascensionTemp);
-		acsensionMult = acensionTemp;
+		acsensionMult = ascensionTemp;
 	}
 }
 
