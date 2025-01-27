@@ -1,6 +1,1 @@
 ErrorDocument 404 http://thatonedoge.rf.gd/404
-RewriteEngine On
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
-RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
