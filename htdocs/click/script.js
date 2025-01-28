@@ -127,7 +127,7 @@ function updateLabels() {
 	cpsclickbutton.textContent = "+10 Clicks per Second - " + cpsclickcost + "c"; //update the click per second cost
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
-	ascensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult;
+	ascensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult.toFixed(2);
 
 	multbar.max = multbarmax;
 	
@@ -241,10 +241,12 @@ function goldenClick () {
 
 function ascend() {
 	var ascensionTemp = Math.pow(clicks, 0.1)
+	console.log("ascensionTemp: " + ascensionTemp);
 	if(acsensionMult < ascensionTemp) {
-		clearData();
-		setCookie("ascMult", ascensionTemp);
+		console.log("logic met");
 		acsensionMult = ascensionTemp;
+		setVars();
+		save();
 	}
 }
 
