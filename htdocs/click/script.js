@@ -242,9 +242,9 @@ function goldenClick () {
 function ascend() {
 	var ascensionTemp = Math.pow(clicks, 0.1)
 	console.log("ascensionTemp: " + ascensionTemp);
-	if(acsensionMult < ascensionTemp) {
+	if(ascensionMult < ascensionTemp) {
 		console.log("logic met");
-		acsensionMult = ascensionTemp;
+		ascensionMult = ascensionTemp;
 		setVars();
 		save();
 	}
