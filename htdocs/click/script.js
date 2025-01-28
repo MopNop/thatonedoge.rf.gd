@@ -38,6 +38,7 @@ const multbar = document.getElementById("multiplierprog"); //multiplier progress
 const multtext = document.getElementById("multipliernum"); //multiplier text
 const multreducttext = document.getElementById("multreductbutton"); //multiplier button text
 const ascensionMultLabel = document.getElementById("ascensionMult");
+const nextAscensionLabel = document.getElementById("ascendFuture");
 
 
 //run loaded() when the window is loaded
@@ -128,6 +129,7 @@ function updateLabels() {
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
 	ascensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult.toFixed(2);
+	nextAscensionLabel.textContent = "Next Ascension Multiplier: x" + ascensionMult.toFixed(2);
 
 	multbar.max = multbarmax;
 	
@@ -169,7 +171,7 @@ function load() {
 		cpp = parseFloat(getCookie("cpp")); //load the cpp
 		cps = parseFloat(getCookie("cps")); //load the cps
 		multreduct = parseFloat(getCookie("multreduct")); //load the multreduct
-		acsensionMult = parseFloat(getCookie("ascMult"));
+		ascensionMult = parseFloat(getCookie("ascMult"));
 	}
 }
 
@@ -240,9 +242,9 @@ function goldenClick () {
 }
 
 function ascend() {
-	var ascensionTemp = Math.pow(clicks, 0.1)
+	var ascensionTemp = Math.pow(clicks, 0.1);
 	console.log("ascensionTemp: " + ascensionTemp);
-	if(ascensionMult < ascensionTemp) {
+	if(ascensionMult < ascensionTemp && clicks >= 10000) {
 		console.log("logic met");
 		ascensionMult = ascensionTemp;
 		setVars();
