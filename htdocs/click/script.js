@@ -40,6 +40,7 @@ const multtext = document.getElementById("multipliernum"); //multiplier text
 const multreducttext = document.getElementById("multreductbutton"); //multiplier button text
 const ascensionMultLabel = document.getElementById("ascensionMult");
 const nextAscensionLabel = document.getElementById("ascendFuture");
+const ascendButton = document.getElementById("ascendButton");
 
 
 //run loaded() when the window is loaded
@@ -130,7 +131,7 @@ function updateLabels() {
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
 	ascensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult.toFixed(2);
-	nextAscensionLabel.textContent = "Next Ascension Multiplier: x" + ascensionMult.toFixed(2);
+	nextAscensionLabel.textContent = "Next Ascension Multiplier: x" + Math.pow(totalClicks, 0.1).toFixed(2);
 
 	multbar.max = multbarmax;
 	
@@ -151,6 +152,13 @@ function updateLabels() {
 		multbar.value = multbarmax; //set the value to the max
 		--mult; //reduce the multiplier
 	}
+
+	if (totalClicks < 10000) {
+		ascendButton.disabled = true;
+	} else {
+		ascendButton.disabled = false;
+	}
+
 	goldenClickTick();
 	
 	

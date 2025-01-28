@@ -3,6 +3,7 @@ body {
 	text-align: center;
 	background: #181825;
 	color: #cdd6f4;
+	padding: 0;
 	font-family: monospace;
 	margin-top: 30px;
 }
@@ -27,9 +28,16 @@ button {
     color: #1e1e2e;
 }
 
+button:disabled {
+    background-color: #3a3983;
+}
+
 #clickbutton {
-	position: relative;
-	top: 300px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+    transform: translate(-50%, -50%);
 	border-radius: 30px;
 	padding-left: 40px;
 	padding-right: 40px;
@@ -40,7 +48,19 @@ button {
 	font-family: sans-serif;
 }
 
+#misc {
+	position: absolute;
+	display: grid;
+	grid-template-columns: 1fr;
+	bottom: 30px;
+}
 
+#ascensions {
+	position: absolute;
+	display: grid;
+	grid-template-columns: 1fr;
+	left: 30px;
+}
 
 #upgrades {
 	position: absolute;
