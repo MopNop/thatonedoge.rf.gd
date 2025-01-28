@@ -4,7 +4,7 @@
 		<title>click</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/click/style.css" />
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<div id="top">
@@ -23,12 +23,20 @@
 			<button onclick="cpsclick()" class="upgradebutton" id="cpsclickbutton">+1 Clicks per Second - 50c</button>
 			<button onclick="multreductclick()" class="upgradebutton" id="multreductbutton">Increase Clicks for Multiplier by 1 - 500c</button>
 		</div>
+
+		<div id="ascensions">
+			<h2>Ascensions</h2>
+            <button onclick="ascend()" id="ascendButton">Ascend</button>
+            <p id="ascensionMult">Ascension Multiplier: </p>
+            <p id="ascendFuture">Next Ascension Multiplier: </p>
+		</div>
+
+		<div id="misc">
+			<h2>Miscellaneous</h2>
+			<button onclick="clearData()">Reset all data</button>
+		</div>
 	</body>
 	<footer>
-		<button onclick="clearData()">reset</button>
-		<button onclick="ascend()">Acsend</button>
-		<p id="ascensionMult">Ascension Multiplier: </p>
-		<p id="ascendFuture">Next Ascension Multiplier: </p>
-		<script src="/click/script.js"></script>
+		<script src="script.js"></script>
 	</footer>
 </html>
