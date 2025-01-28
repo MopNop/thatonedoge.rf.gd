@@ -4,6 +4,8 @@ var cpp = 1; //clicks per press
 var cps = 0; //clicks per second
 var multreduct = 0; //mult reduction
 var mult = 1; //cpp multiplier
+var totalClicks = 0;
+var ascensionMult = 1;
 
 //upgrades
 const baseexclickcost = 10 / 1.1; //base cost of extra click
@@ -25,7 +27,6 @@ var multbarmax = 20; //maximum of the multiplier bar
 const multbarincrease = 1.2; //multiplier for the max
 var goldenClickTime = 0;
 var normal = true;
-var ascensionMult = 1;
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
@@ -38,6 +39,7 @@ const multbar = document.getElementById("multiplierprog"); //multiplier progress
 const multtext = document.getElementById("multipliernum"); //multiplier text
 const multreducttext = document.getElementById("multreductbutton"); //multiplier button text
 const ascensionMultLabel = document.getElementById("ascensionMult");
+const nextAscensionLabel = document.getElementById("ascendFuture");
 
 
 //run loaded() when the window is loaded
@@ -128,6 +130,7 @@ function updateLabels() {
 	multtext.textContent = "x"+mult; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
 	ascensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult.toFixed(2);
+	nextAscensionLabel.textContent = "Next Ascension Multiplier: x" + ascensionMult.toFixed(2);
 
 	multbar.max = multbarmax;
 	
@@ -160,6 +163,7 @@ function save() {
 	setCookie("cps", cps); //save the cps
 	setCookie("multreduct", multreduct); //save the multreduct
 	setCookie("ascMult", ascensionMult);
+	setCookie("totalClicks", totalClicks);
 }
 
 //load the game
@@ -169,7 +173,8 @@ function load() {
 		cpp = parseFloat(getCookie("cpp")); //load the cpp
 		cps = parseFloat(getCookie("cps")); //load the cps
 		multreduct = parseFloat(getCookie("multreduct")); //load the multreduct
-		acsensionMult = parseFloat(getCookie("ascMult"));
+		ascensionMult = parseFloat(getCookie("ascMult"));
+		totalClicks = parseFloat(getCookie("totalClicks"));
 	}
 }
 
@@ -215,6 +220,7 @@ function setVars() {
 	multbarmax = 20;
 	mult = 1;
 	multreduct = 0
+	totalClicks = 0;
 }
 
 //function for the equation for calculating prices
@@ -233,6 +239,7 @@ function goldenClickTick() {
 
 function updateClick(clicksToAdd) {
 	clicks += clicksToAdd * ascensionMult;
+	totalClicks += clicksToAdd * ascensionMult;
 }
 
 function goldenClick () {
@@ -240,9 +247,9 @@ function goldenClick () {
 }
 
 function ascend() {
-	var ascensionTemp = Math.pow(clicks, 0.1)
+	var ascensionTemp = Math.pow(totalClicks, 0.1);
 	console.log("ascensionTemp: " + ascensionTemp);
-	if(ascensionMult < ascensionTemp) {
+	if(ascensionMult < ascensionTemp && totalClicks >= 10000) {
 		console.log("logic met");
 		ascensionMult = ascensionTemp;
 		setVars();
