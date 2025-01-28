@@ -241,10 +241,12 @@ function goldenClick () {
 
 function ascend() {
 	var ascensionTemp = Math.pow(clicks, 0.1)
+	console.log("ascensionTemp: " + String(ascensionTemp))
 	if(acsensionMult < ascensionTemp) {
-		clearData();
-		setCookie("ascMult", ascensionTemp);
+		console.log("logic met")
 		acsensionMult = ascensionTemp;
+		setVars();
+		save();
 	}
 }
 
