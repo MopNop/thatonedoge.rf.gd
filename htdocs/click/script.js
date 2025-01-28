@@ -240,7 +240,7 @@ function goldenClick () {
 }
 
 function ascend() {
-	var ascensionTemp = clicks ^ 0.1;
+	var ascensionTemp = Math.pow(clicks, 0.1)
 	if(acsensionMult < ascensionTemp) {
 		clearData();
 		setCookie("ascMult", ascensionTemp);
