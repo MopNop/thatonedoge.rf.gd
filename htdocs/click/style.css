@@ -48,11 +48,9 @@ button:disabled {
 	font-family: sans-serif;
 }
 
-#misc {
+.misc {
 	position: absolute;
-	display: grid;
-	grid-template-columns: 1fr;
-	bottom: 30px;
+	left: 1%;
 }
 
 #ascensions {
@@ -78,5 +76,25 @@ button:disabled {
 
 #top {
 	line-height: 10px;
+}
+
+#bottom {
+	position: absolute;
+	bottom: 3%;
+	left: 50%;
+	margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar{
+	left: 0.5%;
+	top: 0.5%;
+	height:100%;
+	width:30%;
+	border-radius: 10px;
+	background-color:#242438;
+	position:absolute!important;
+	z-index:1;
+	overflow:auto;
 }
 

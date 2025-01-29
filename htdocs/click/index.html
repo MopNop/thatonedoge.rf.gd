@@ -6,13 +6,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style.css" />
 	</head>
+	<button class="misc" onclick="w3_open()">Options</button>
 	<body>
+		<div class="sidebar" style="display:none" id="mySidebar">
+			<h2>Options & Stats</h2>
+			<button onclick="w3_close()">Close</button>
+			<br>
+			<br>
+			<button class="upgradebutton" onclick="clearData()">Reset all data</button>
+			<br>
+			<p id="clicksTracker">Total Clicks: </p>
+			<p id="cpptracker"> 1 Clicks per Press</p>
+			<p id="cpstracker">0 Clicks per Second</p>
+			<p id="ascTracker">Ascensions: </p>
+			<p id="multTracker">Multiplier Reduction: </p>
+		</div>
+
 		<div id="top">
-		<h1 style="line-height: normal;">generic clicker</h1>
-		<h3 id="counter">0 Clicks</h3>
-		<h4 id="cpptracker"> 1 Clicks per Press</h4>
-		<h4 id="cpstracker">0 Clicks per Second</h4>
-		<progress id="multiplierprog" value="0" max="20"></progress> <p id="multipliernum">x1</p>
+			<h1 style="line-height: normal;">generic clicker</h1>
+			<h3 id="counter">0 Clicks</h3>
 		</div>
 		
 		<button id="clickbutton" onclick="clickd()" tabindex="-1">Click</button>
@@ -31,9 +43,8 @@
             <p id="ascendFuture">Next Ascension Multiplier: </p>
 		</div>
 
-		<div id="misc">
-			<h2>Miscellaneous</h2>
-			<button onclick="clearData()">Reset all data</button>
+		<div id="bottom">
+			<progress id="multiplierprog" value="0" max="20"></progress> <p id="multipliernum">x1</p>
 		</div>
 	</body>
 	<footer>
