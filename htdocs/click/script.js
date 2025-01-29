@@ -27,12 +27,16 @@ var multbarmax = 20; //maximum of the multiplier bar
 const multbarincrease = 1.2; //multiplier for the max
 var goldenClickTime = 0;
 var normal = true;
+var ascensions = 0;
 
 //element constants
 const clickbutton = document.getElementById("clickbutton"); //button that you click
 const counter = document.getElementById("counter"); //text for each click
 const cpptracker = document.getElementById("cpptracker"); //click per press tracker
 const cpstracker = document.getElementById("cpstracker"); //clicks per second tracker
+const totalTracker = document.getElementById("clicksTracker"); //click per press tracker
+const ascensionTracker = document.getElementById("ascTracker"); //click per press tracker
+const multiplierTracker = document.getElementById("multTracker"); //click per press tracker
 const exclickbutton = document.getElementById("exclickbutton"); //button to buy extra clicks
 const cpsclickbutton = document.getElementById("cpsclickbutton"); //button to buy clicks per second
 const multbar = document.getElementById("multiplierprog"); //multiplier progress bar
@@ -123,15 +127,19 @@ function updateCosts() {
 
 //update labels
 function updateLabels() {
+	var ascendMult = Math.pow(totalClicks, 0.1);
 	cpptracker.textContent = cpp + " Clicks per Press (x" + mult + ")"; //update the clicks per press label
 	counter.textContent = Math.round(clicks) + " Clicks"; //update the clicks label
 	cpstracker.textContent = (cps * 10)+ " Clicks per Second"; //update the clicks per second label
+	totalTracker.textContent = "Total Clicks: " + Math.round(totalClicks); //update the total clicks label
+	ascensionTracker.textContent = "Ascensions: " + ascensions; //update the ascension label
+	multiplierTracker.textContent = "Multiplier Reduction: " + multreduct; //update the multiplier label
 	exclickbutton.textContent = "Extra Click - " + exclickcost + "c";  //update the extra click cost
 	cpsclickbutton.textContent = "+10 Clicks per Second - " + cpsclickcost + "c"; //update the click per second cost
-	multtext.textContent = "x"+mult; //set the multiplier text
+	multtext.textContent = "x"+mult+" Clicks per Press"; //set the multiplier text
 	multreducttext.textContent = "Increase Clicks for Multiplier by 1 - " + multreductcost + "c";
 	ascensionMultLabel.textContent = "Ascension Multiplier: x" + ascensionMult.toFixed(2);
-	nextAscensionLabel.textContent = "Next Ascension Multiplier: x" + Math.pow(totalClicks, 0.1).toFixed(2);
+	nextAscensionLabel.textContent = "Next Ascension Multiplier: x" + ascendMult.toFixed(2);
 
 	multbar.max = multbarmax;
 	
@@ -153,7 +161,7 @@ function updateLabels() {
 		--mult; //reduce the multiplier
 	}
 
-	if (totalClicks < 10000) {
+	if (ascendMult <= ascensionMult) {
 		ascendButton.disabled = true;
 	} else {
 		ascendButton.disabled = false;
@@ -164,6 +172,14 @@ function updateLabels() {
 	
 }
 
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+}
+  
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+}
+
 //save the game
 function save() {
 	setCookie("clicks", clicks); //save the clicks
@@ -172,6 +188,7 @@ function save() {
 	setCookie("multreduct", multreduct); //save the multreduct
 	setCookie("ascMult", ascensionMult);
 	setCookie("totalClicks", totalClicks);
+	setCookie("ascensions", ascensions);
 }
 
 //load the game
@@ -183,6 +200,7 @@ function load() {
 		multreduct = parseFloat(getCookie("multreduct")); //load the multreduct
 		ascensionMult = parseFloat(getCookie("ascMult"));
 		totalClicks = parseFloat(getCookie("totalClicks"));
+		ascensions = parseFloat(getCookie("ascensions"));
 	}
 }
 
@@ -215,6 +233,9 @@ function clearData() {
     document.cookie = "cps=0";
 	document.cookie = "multreduct=0";
 	document.cookie = "ascMult=1";
+	document.cookie = "totalClicks=0";
+	document.cookie = "ascensions=0";
+	ascensions = 0;
 	setVars(); //reset the variables
 	loaded(); //update labels and stuff
 }
@@ -256,11 +277,12 @@ function goldenClick () {
 
 function ascend() {
 	var ascensionTemp = Math.pow(totalClicks, 0.1);
-	console.log("ascensionTemp: " + ascensionTemp);
-	if(ascensionMult < ascensionTemp && totalClicks >= 10000) {
+	console.log(ascensions);
+	if(ascensionMult < ascensionTemp) {
 		console.log("logic met");
 		ascensionMult = ascensionTemp;
 		setVars();
+		ascensions = ascensions + 1;
 		save();
 	}
 }
