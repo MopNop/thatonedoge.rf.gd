@@ -17,6 +17,11 @@ footer {
 }
 
 #top {
+    height: 100vh;
+}
+
+
+#main_content {
     text-align: center;
 }
 
