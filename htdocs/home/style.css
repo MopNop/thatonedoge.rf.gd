@@ -12,8 +12,10 @@ body {
 
 
 footer {
-    position: absolute;
-    bottom: 0;
+    padding-top: 50px;
+    margin: auto;
+    text-align: center;
+
 
 }
 
